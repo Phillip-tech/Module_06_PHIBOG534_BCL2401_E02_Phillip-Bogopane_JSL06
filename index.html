@@ -9,11 +9,11 @@
 <body>
     <header>
         <h1>🍝 Welcome to CodeCuisine 🥖</h1>
-        <p>Your Delicious Food Awaits!</p>
     </header>
+
     <main>
         <section id="menu">
-            <!-- Menu items will be dynamically generated here -->
+            <div id="menu-container"></div>
         </section>
         <section id="order">
             <h2>Your Order</h2>
@@ -21,11 +21,16 @@
                 <!-- Order items will be displayed here -->
             </ul>
             <p>Total: R<span id="order-total">0.00</span></p>
+            <button class="button" onclick="clearItems()">Clear</button>
+            <button class="button" onclick="submit()">Submit</button>
+            
         </section>
     </main>
+
     <footer>
         <p>&copy; 2024 CodeCuisine. All rights reserved.</p>
     </footer>
+
     <script src="index.js"></script>
 </body>
 </html>

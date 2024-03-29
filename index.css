@@ -1,82 +1,88 @@
-/* Reset some default styles for the page */
-body, h1, h2, p, ul {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0; /* Add this to reset body margin */
+    background-color: #f5f5f5; /* Set background color for the body */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
 header {
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
+    background-color: #007bff; /* Set background color for the header */
+    color: #fff; /* Set text color to white */
+    text-align: center; /* Center align text */
+    padding: 1rem 0; /* Add padding to the header */
 }
 
 header h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-header p {
-    font-size: 1rem;
+    font-size: 2rem; /* Set font size for header */
+    margin-bottom: 0.5rem; /* Add bottom margin */
 }
 
 main {
-    display: flex;
-    justify-content: space-between;
-    margin: 2rem;
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space items evenly */
+    margin: 2rem; /* Add margin around the main content */
 }
 
 #menu, #order {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    flex: 1;
+    background-color: #fff; /* Set background color for menu and order sections */
+    padding: 1rem; /* Add padding */
+    border-radius: 5px; /* Add border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    flex: 1; /* Allow sections to grow */
 }
 
 #menu {
-    max-width: 60%;
-    overflow-y: auto;
+    max-width: 60%; /* Set maximum width for the menu section */
+    overflow-y: auto; /* Add vertical scrollbar if needed */
 }
 
 #order {
-    max-width: 35%;
-    position: relative; /* Add this for position reference */
-    padding-bottom: 4em;
+    max-width: 35%; /* Set maximum width for the order section */
+    position: relative; /* Set position relative */
+    padding-bottom: 4em; /* Add padding at the bottom */
 }
 
-#menu h3, #order h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+#order h2 {
+    font-size: 1.5rem; /* Set font size for heading */
+    margin-bottom: 1rem; /* Add bottom margin */
 }
 
-#menu ul, #order ul {
-    list-style: none;
-    padding: 0;
+#order ul {
+    list-style: none; /* Remove default list style */
+    padding: 0; /* Remove default padding */
 }
 
-#menu li, #order li {
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Add this for the animation */
+#order li {
+    margin-bottom: 0.5rem; /* Add bottom margin to list items */
+    cursor: pointer; /* Set cursor to pointer */
+    transition: background-color 0.3s ease; /* Add transition effect */
+    background-color: #f9f9f9; /* Set background color for list items */
 }
 
 #order-total {
-    font-weight: bold;
+    font-weight: bold; /* Set font weight to bold */
 }
 
 footer {
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #333;
-    color: #fff;
-    position: fixed; /* Add this to fix the footer at the bottom */
-    bottom: 0; /* Add this to position it at the bottom */
-    width: 100%; /* Add this to span the full width */
+    text-align: center; /* Center align text */
+    padding: 1rem 0; /* Add padding */
+    background-color: #333; /* Set background color for the footer */
+    color: #fff; /* Set text color to white */
+    position: fixed; /* Fix position at the bottom */
+    bottom: 0; /* Align at the bottom */
+    width: 100%; /* Take full width */
+}
+
+.button {
+    background-color: #007bff; /* Set background color for buttons */
+    color: #fff; /* Set text color to white */
+    border: none; /* Remove border */
+    padding: 0.5rem 1rem; /* Add padding */
+    margin: 0.5rem; /* Add margin */
+    cursor: pointer; /* Set cursor to pointer */
+    border-radius: 5px; /* Add border radius */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Change background color on hover */
 }

@@ -1,58 +1,105 @@
-// Sample menu data (Consider fetching this data from a server in a real-world scenario)
 const menu = {
-    Starters: ["Garlic Bread", "Bruschetta"],
-    MainCourses: ["Margherita Pizza", "Spaghetti Carbonara"],
-    Desserts: ["Tiramisu", "Cheesecake"]
+    Starters: [{name: "Garlic Bread", price: 8}, {name: "Bruschetta", price: 10}],
+    MainCourses: [{name: "Margherita Pizza", price: 15}, {name: "Spaghetti Carbonara", price: 18}],
+    Desserts: [{name: "Tiramisu", price: 12}, {name: "Cheesecake", price: 10}]
 };
 
-// Function to display menu items by category
+// Function to display menu items
 function displayMenuItems(menu) {
-    // Get the menu container element from the HTML
+    const menuContainer = document.getElementById("menu-container");
 
-    // Loop through each category and its items in the menu object
+    // Loop through each category in the menu object
+    
+    for (const [category, items] of Object.entries(menu)) {
+        const categoryHeading = document.createElement("h3");
+        categoryHeading.textContent = category;
+        menuContainer.appendChild(categoryHeading);
 
-        // Create an element to represent the category
+        const itemList = document.createElement("ul");
+        menuContainer.appendChild(itemList);
+   
+        // Create list items for each menu item in the category
 
-        // Set the text content of the category element to the category name
-
-        // Append the category element to the menu container
-
-        // Create an element to represent a list of items
-
-        // Append a list of items element to the menu container
-
-        // Loop through the items in the category and create list items
-
-            // Create a list item element
-
-            // Set the text content of the list item element to the item name
-
-            // Attach a click event listener to the list item to add it to the order
-
-            // Append the list item to the list of items
-
-            
+        items.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${item.name} - R${item.price}`;
+            listItem.addEventListener("click", () => addToOrder(item.name, item.price));
+            listItem.style.cursor = "pointer"; // Set cursor to pointer
+            itemList.appendChild(listItem);
+        });
+    }
 }
 
-// Callback function for adding an item to the order
-function addToOrder(itemName) {
-    // Get the order items list and the order total element from the HTML
+// Function to add an item to the order
+function addToOrder(itemName, itemPrice) {
+    const orderItemsList = document.getElementById("order-items");
+    const orderTotalElem = document.getElementById("order-total");
 
-    // Create a list item for the order
+    const listItem = document.createElement("li");
+    listItem.textContent = `${itemName} - R${itemPrice}`;
 
-    // Set the text content of the list item to the item name
+    // Create a button to remove the item
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Remove Item";
+    removeButton.className = "button remove-button"; // Add CSS classes for styling
+    removeButton.addEventListener("click", () => removeItem(listItem, itemPrice));
 
-    // Append the list item to the order items list
+    listItem.appendChild(removeButton);
+    orderItemsList.appendChild(listItem);
 
-    // Calculate and update the total price
-
-    // Update the text content of the order total element with the new total
+    // Update the total price
+    const currentTotal = parseFloat(orderTotalElem.textContent) || 0;
+    const newTotal = currentTotal + itemPrice;
+    orderTotalElem.textContent = newTotal.toFixed(2);
 }
 
-// Function to initialize the menu system
+// Function to remove an item from the order
+function removeItem(itemElement, itemPrice) {
+    const orderItemsList = document.getElementById("order-items");
+    const orderTotalElem = document.getElementById("order-total");
+
+    orderItemsList.removeChild(itemElement);
+
+    // Update the total price
+    const currentTotal = parseFloat(orderTotalElem.textContent) || 0;
+    const newTotal = currentTotal - itemPrice;
+    orderTotalElem.textContent = newTotal.toFixed(2);
+}
+
+// Function to clear all items from the order
+function clearItems() {
+    document.getElementById('order-items').innerHTML = '';
+    document.getElementById('order-total').innerText = '0.00';
+}
+
+// Function to submit the order
+function submit() {
+    const orderItemsList = document.getElementById("order-items");
+    if (orderItemsList.children.length === 0) {
+        alert('Please add items to your order before submitting.');
+    } else {
+        clearItems(); // Clear items when submitting
+        alert('Your order has been submitted. Thank you!');
+    }
+}
+
+// Initialize the menu system
 function initMenuSystem(menu) {
-    // Call the function to display menu items
+    displayMenuItems(menu);
 }
 
-// Start the menu system by calling the init function
-initMenuSystem(menu);
+// Event listener when the DOM content is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    const menuContainer = document.getElementById("menu-container");
+    const orderItemsList = document.getElementById("order-items");
+    const orderTotalElem = document.getElementById("order-total");
+
+    // Check if critical elements are present in the HTML
+    
+    if (!menuContainer || !orderItemsList || !orderTotalElem) {
+        console.error("Critical elements not found in the HTML. Please check your HTML structure.");
+        return;
+    }
+
+    initMenuSystem(menu); // Initialize the menu system
+})
